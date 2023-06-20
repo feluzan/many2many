@@ -18,6 +18,8 @@ public class User {
 
     private List<User> following;
 
+    private List<User> followedBy;
+
     public void addFollowing(User followed){
         this.following.add(followed);
     }

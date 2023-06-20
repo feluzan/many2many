@@ -25,6 +25,9 @@ public class UserEntity {
     @JoinTable(name = "follows", joinColumns = @JoinColumn(name = "id_follower"), inverseJoinColumns = @JoinColumn(name = "id_followed"))
     private List<UserEntity> following;
 
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "following")
+    private List<UserEntity> followedBy;
+
 
 //    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "following")
 //    private List<UserEntity> followedBy;
