@@ -32,6 +32,8 @@ public class UserService {
 
     public void addFollow(User follower, User followed){
         follower.addFollowing(followed);
+        //followed.addFollowedBy(follower);
         userRepository.save(userMapper.fromModel(follower));
+        //userRepository.save(userMapper.fromModel(followed));
     }
 }

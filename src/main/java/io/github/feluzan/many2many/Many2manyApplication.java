@@ -25,6 +25,7 @@ public class Many2manyApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+
 		User user1 = new User();
 		user1.setUsername("user1");
 		user1 = userService.save(user1);
@@ -36,8 +37,7 @@ public class Many2manyApplication implements CommandLineRunner {
 		user2 = userService.findById(user2.getId());
 
 		userService.addFollow(user1,user2);
-//		funcionarioRepository.save(new FuncionarioEntity(2, "Guilherme Araújo", 8000, 1));
-//		funcionarioRepository.save(new FuncionarioEntity(3, "Marianna Santos", 10000, 2));
+		userService.addFollow(user2,user1);
 	}
 
 }

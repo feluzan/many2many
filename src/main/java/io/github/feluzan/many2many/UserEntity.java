@@ -1,5 +1,6 @@
 package io.github.feluzan.many2many;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +21,12 @@ public class UserEntity {
 
     private String username;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "follows", joinColumns = @JoinColumn(name = "id_follower"), inverseJoinColumns = @JoinColumn(name = "id_followed"))
     private List<UserEntity> following;
+
+
+//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "following")
+//    private List<UserEntity> followedBy;
 }
+
