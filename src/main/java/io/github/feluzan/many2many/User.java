@@ -16,14 +16,14 @@ public class User {
     private Long id;
     private String username;
 
-    @JsonFilter("followingCustomFilter")
-    private List<User> following;
+    @JsonFilter("friendsCustomFilter")
+    private List<User> friends;
 
-    @JsonFilter("followedByCustomFilter")
-    private List<User> followedBy;
+    @JsonFilter("friendOfCustomFilter")
+    private List<User> friendOf;
 
-    public void addFollowing(User followed){
-        this.following.add(followed);
+    public void addFriends(User friend){
+        this.friends.add(friend);
     }
 
 }

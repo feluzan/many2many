@@ -22,11 +22,11 @@ public class UserEntity {
     private String username;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "follows", joinColumns = @JoinColumn(name = "id_follower"), inverseJoinColumns = @JoinColumn(name = "id_followed"))
-    private List<UserEntity> following;
+    @JoinTable(name = "friendship", joinColumns = @JoinColumn(name = "id_friend"), inverseJoinColumns = @JoinColumn(name = "id_friend_of"))
+    private List<UserEntity> friends;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "following")
-    private List<UserEntity> followedBy;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "friends")
+    private List<UserEntity> friendOf;
 
 
 //    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "following")

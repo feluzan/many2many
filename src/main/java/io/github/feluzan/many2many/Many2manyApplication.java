@@ -36,8 +36,7 @@ public class Many2manyApplication implements CommandLineRunner {
 		user2 = userService.save(user2);
 		user2 = userService.findById(user2.getId());
 
-		userService.addFollow(user1,user2);
-		userService.addFollow(user2,user1);
+		userService.addFriends(user1,user2);
 	}
 
 }
