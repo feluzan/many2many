@@ -22,10 +22,21 @@ public class UserController {
 
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<User> list(){
-        return  userService.listAll();
+    public MappingJacksonValue list(){
+        SimpleBeanPropertyFilter simpleBeanPropertyFilter = SimpleBeanPropertyFilter.serializeAllExcept("following", "followedBy");
+        SimpleBeanPropertyFilter simpleBeanPropertyFilter2 = SimpleBeanPropertyFilter.serializeAllExcept("following", "followedBy");
 
+        FilterProvider filterProvider = new SimpleFilterProvider()
+                .addFilter("followingCustomFilter", simpleBeanPropertyFilter)
+                .addFilter("followedByCustomFilter", simpleBeanPropertyFilter2)
+                .setFailOnUnknownId(false);
 
+        List<User> response =  userService.listAll();
+
+        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(response);
+        mappingJacksonValue.setFilters(filterProvider);
+
+        return mappingJacksonValue;
     }
 
 }

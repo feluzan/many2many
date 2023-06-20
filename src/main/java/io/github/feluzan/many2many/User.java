@@ -16,8 +16,10 @@ public class User {
     private Long id;
     private String username;
 
+    @JsonFilter("followingCustomFilter")
     private List<User> following;
 
+    @JsonFilter("followedByCustomFilter")
     private List<User> followedBy;
 
     public void addFollowing(User followed){
