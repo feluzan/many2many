@@ -1,6 +1,7 @@
 package io.github.feluzan.many2many;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,14 +17,17 @@ public class User {
     private Long id;
     private String username;
 
-    @JsonFilter("friendsCustomFilter")
+    @JsonIgnore
     private List<User> friends;
 
-    @JsonFilter("friendOfCustomFilter")
+    @JsonIgnore
     private List<User> friendOf;
 
-    public void addFriends(User friend){
-        this.friends.add(friend);
+    @JsonFilter("customFriendshipFilter")
+    private List<User> friendship;
+
+    public void addFriendship(User friend){
+        this.friendship.add(friend);
     }
 
 }

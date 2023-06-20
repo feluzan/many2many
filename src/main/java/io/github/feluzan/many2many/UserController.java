@@ -23,12 +23,10 @@ public class UserController {
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public MappingJacksonValue list(){
-        SimpleBeanPropertyFilter simpleBeanPropertyFilter = SimpleBeanPropertyFilter.serializeAllExcept("friends", "friendOf");
-        SimpleBeanPropertyFilter simpleBeanPropertyFilter2 = SimpleBeanPropertyFilter.serializeAllExcept("friends", "friendOf");
+        SimpleBeanPropertyFilter simpleBeanPropertyFilter = SimpleBeanPropertyFilter.serializeAllExcept("friendship");
 
         FilterProvider filterProvider = new SimpleFilterProvider()
-                .addFilter("friendsCustomFilter", simpleBeanPropertyFilter)
-                .addFilter("friendOfCustomFilter", simpleBeanPropertyFilter2)
+                .addFilter("customFriendshipFilter", simpleBeanPropertyFilter)
                 .setFailOnUnknownId(false);
 
         List<User> response =  userService.listAll();

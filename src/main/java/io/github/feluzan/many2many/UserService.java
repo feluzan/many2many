@@ -30,10 +30,8 @@ public class UserService {
         return userMapper.toModel(userRepository.findById(id).orElse(null));
     }
 
-    public void addFriends(User friend1, User friend2){
-        friend1.addFriends(friend2);
+    public void addFriendship(User friend1, User friend2){
+        friend1.addFriendship(friend2);
         userRepository.save(userMapper.fromModel(friend1));
-        friend2.addFriends(friend1);
-        userRepository.save(userMapper.fromModel(friend2));
     }
 }

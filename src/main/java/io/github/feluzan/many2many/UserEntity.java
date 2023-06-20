@@ -28,6 +28,9 @@ public class UserEntity {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "friends")
     private List<UserEntity> friendOf;
 
+    @Transient
+    private List<UserEntity> friendship;
+
 
 //    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "following")
 //    private List<UserEntity> followedBy;
